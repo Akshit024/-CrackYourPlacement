@@ -1,13 +1,14 @@
 import java.util.*;
 
 public class Chocolate_Distribution_Problem {
-    public static int chocolateDistribution(int arr[], int m) {
-        Arrays.sort(arr);
-        int ans = Integer.MAX_VALUE;
-        for (int i = 0; i < arr.length-m; i++) {
-            int diff = arr[i+m-1] - arr[i];
-            ans = Math.min(ans, diff);
+    public long findMinDiff (ArrayList<Long> a, long n, long m)
+    {
+        long min =Long.MAX_VALUE;
+        Collections.sort(a);
+        for(int i =0;i<=n-m;i++){
+            if(min>(a.get(i+(int)m-1)-a.get(i))) min =a.get(i+(int)m-1)-a.get(i);
         }
-        return ans;
+        return min;
+        // your code here
     }
 }
