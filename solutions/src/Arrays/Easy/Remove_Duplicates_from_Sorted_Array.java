@@ -1,3 +1,5 @@
+package Arrays.Easy;
+
 public class Remove_Duplicates_from_Sorted_Array {
     public int removeDuplicates(int[] nums) {
         int i=1;

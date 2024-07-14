@@ -1,3 +1,5 @@
+package Arrays.Easy;
+
 public class Find_the_Duplicate_Number {
     public int findDuplicate(int[] nums) {
         int slow=0, fast=0;

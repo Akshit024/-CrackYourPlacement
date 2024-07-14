@@ -1,3 +1,5 @@
+package Arrays.Easy;
+
 public class Set_Matrix_Zeroes {
     public void setZeroes(int[][] matrix) {
         int n =matrix.length;
