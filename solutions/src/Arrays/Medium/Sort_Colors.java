@@ -1,4 +1,4 @@
-package Arrays.Easy;
+package Arrays.Medium;
 
 public class Sort_Colors {
     public static void swap(int[] nums,int i,int j){

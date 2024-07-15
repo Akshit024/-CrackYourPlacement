@@ -1,4 +1,4 @@
-package Arrays.Easy;
+package Arrays.Medium;
 
 public class Set_Matrix_Zeroes {
     public void setZeroes(int[][] matrix) {
