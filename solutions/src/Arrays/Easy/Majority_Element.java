@@ -1,6 +1,6 @@
 package Arrays.Easy;
 
-public class Majority_Element {4
+public class Majority_Element {
     public int majorityElement(int[] nums) {
         int ele = nums[0];
         int count =1;
