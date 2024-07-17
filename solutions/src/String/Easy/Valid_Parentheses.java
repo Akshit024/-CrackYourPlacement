@@ -1,5 +1,8 @@
 package String.Easy;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class Valid_Parentheses {
     public boolean isValid(String name) {
         Deque<Character> m =new ArrayDeque<>();
