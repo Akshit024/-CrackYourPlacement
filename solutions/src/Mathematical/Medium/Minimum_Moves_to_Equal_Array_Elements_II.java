@@ -1,4 +1,5 @@
 package Mathematical.Medium;
+import java.util.*;
 
 public class Minimum_Moves_to_Equal_Array_Elements_II {
     public int minMoves2(int[] nums) {
