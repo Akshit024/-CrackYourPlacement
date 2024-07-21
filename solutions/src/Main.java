@@ -1,38 +1,80 @@
 import java.util.*;
+
 public class Main {
-    static long find(int[] arr, int n){
-        int ans = 0;
-        boolean flag = false;
-        ArrayList<String> s = new ArrayList<>();
-        for(int i=0;i<arr.length;i++){
-            StringBuilder sb = new StringBuilder();
-            int num = arr[i];
-            while(num>0){
-                sb.append(num%2);
-                num = num/2;
+    static void find(long arr[][], int n, long[] query, int q) {
+        ArrayList<Long> list = new ArrayList<>();
+        HashMap<Long, Long> map = new HashMap<>();
+
+        int j = 0;
+        long count = 0;
+        for (long i[] : arr) {
+            if (i[0] == 1) {
+                count = count + 1L;
+                map.put(count, i[1]);
+            } else {
+                count = count * (i[1] + 1L);
             }
-            s.add(sb.toString());
-            if(ans == -1 || ans == sb.length()){
-                ans = sb.length();
-            }else{
-                flag = true;
-            }
-            ans = Math.max(ans,sb.length());
+            list.add(count);
         }
-        return ans;
+
+        for (long i : query) {
+            long num = i;
+
+            while (!map.containsKey(num)) {
+                int pos = 0;
+                int s = 0;
+                int e = list.size() - 1;
+                while (s <= e) {
+                    int mid = s+ (e-s) / 2;
+                    if (list.get(mid) >= num) {
+                        pos = mid;
+                        e = mid - 1;
+                    } else {
+                        s = mid + 1;
+                    }
+                }
+
+                if (map.containsKey(list.get(pos))) {
+                    num = list.get(pos);
+                } else {
+                    int prev = pos - 1;
+                    if (prev < 0) {
+                        break;
+                    }
+                    long rem = num % list.get(prev);
+                    if (rem == 0L) {
+                        num = list.get(prev);
+                    } else {
+                        num = rem;
+                    }
+                }
+            }
+            System.out.print(map.get(num) + " ");
+        }
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         int t = sc.nextInt();
-        while(t>0){
+        while (t > 0) {
             int n = sc.nextInt();
-            int[] arr = new int[n];
-            for(int i=0;i<n;i++){
-                arr[i]=sc.nextInt();
+            int q = sc.nextInt();
+            long[][] arr = new long[n][2];
+            for (int i = 0; i < n; i++) {
+                arr[i][0] = sc.nextLong();
+                arr[i][1] = sc.nextLong();
             }
-            System.out.println(find(arr,n));
+
+            long query[] = new long[q];
+            for (int i = 0; i < q; i++) {
+                query[i] = sc.nextLong();
+            }
+
+            find(arr, n, query, q);
+            System.out.println();
             t--;
         }
+        sc.close();
     }
 }
